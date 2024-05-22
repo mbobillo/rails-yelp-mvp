@@ -1,0 +1,19 @@
+<div class="container">
+  <h1><%= @restaurant.name %></h1>
+  <%= @restaurant.address%>
+  <div>
+   <p>Phone number : <%= @restaurant.phone_number%></p>
+  </div>
+  <div>
+    <p>Cuisine type: <%= @restaurant.category%></p>
+  </div>
+  <ul class="list-group list-unstyled">
+    <li class="p-2">Reviews</li>
+    <% @restaurant.reviews.each do |review| %>
+      <li class="list-group-item">Rating: <%= review.rating %> // <%= review.content %></li>
+    <% end %>
+    <%= render partial: "form", locals: {review: @review}, status: :unprocessable_entity %>
+    <%# <button class="btn btn-outline-secondary m-2 "><%= link_to "Write a review", new_restaurant_review_path(@restaurant)%>
+  </ul>
+  <%= link_to "Back to restaurants", restaurants_path %>
+</div>
